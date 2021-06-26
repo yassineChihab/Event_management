@@ -1,0 +1,55 @@
+﻿@model CoreMigration.Models.Activite
+@{
+    ViewBag.Title = "add_gallerie_page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Add new gallerie</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="post" action="Add_gal" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="event">Type of the event</label>
+                    <input type="text" name="titr" class="form-control" id="event" placeholder="Enter Title">
+                </div>
+                <div class="form-group">
+                    <label for="inputDescription">Event ID</label>
+                    <div>
+                        @Html.DropDownListFor(x => x.titre, ViewBag.ActivitieList as SelectList, "Choisir une Activite", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Image</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" name="path" class="custom-file-input" id="exampleInputFile">
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="">Upload</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Event Date</label>
+                    <div class="input-group">
+                        <input type="date" name="event_date" id="start">
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+

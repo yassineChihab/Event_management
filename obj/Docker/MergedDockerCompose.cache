@@ -1,0 +1,24 @@
+services:
+  coremigration:
+    build:
+      context: C:\Users\abc\Downloads\event-management-main\event-management-main
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: coremigration
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\abc\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\abc\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  db:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Yassine@123
+    image: mcr.microsoft.com/mssql/server:2017-latest
+version: '3.4'
